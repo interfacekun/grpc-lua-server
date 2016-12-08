@@ -1,0 +1,17 @@
+syntax="proto3";
+
+package services;
+
+message ServiceMsg{
+    uint64 PlayerId=1;
+    uint32 ProtoId=2;
+    uint32 LogId=3;
+    int32 ReturnCode=4;
+    bytes Payload=5;
+	uint64 ClanId=6;
+}
+
+service GameService {
+    // Bidirectional streaming
+    rpc Stream(stream ServiceMsg) returns (stream ServiceMsg){}
+}
